@@ -1,0 +1,20 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: teamsmanagement
+
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${MYSQL_DB:teams_management}
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:password}
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+
+  flyway:
+    enabled: true
+    locations:
+      - classpath:/db/migration

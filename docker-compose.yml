@@ -1,0 +1,40 @@
+
+services:
+
+  teams-management-mysql:
+    container_name: teams-management-mysql
+    image: arm64v8/mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: teams_management
+      MYSQL_USER: localUser
+      MYSQL_PASSWORD: localPassword
+    ports:
+      - 3306:3306
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      - teams-management-network
+
+  teams-management-app-be:
+    container_name: teams-management-app-be
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      MYSQL_HOST: teams-management-mysql
+      MYSQL_DB: teams_management
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    depends_on:
+      - teams-management-mysql
+    networks:
+      - teams-management-network
+
+volumes:
+  my-db:
+
+networks:
+  teams-management-network:
