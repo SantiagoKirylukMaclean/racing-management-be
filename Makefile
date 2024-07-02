@@ -25,6 +25,11 @@ test:
 run:
 	$(GRADLEW) run
 
+# Levantar el mysql
+.PHONY: mysql-docker
+mysql-docker:
+	docker-compose up teams-management-mysql
+
 # Docker Compose: parar, construir sin cache y levantar los servicios
 .PHONY: docker-rebuild
 docker-rebuild:
