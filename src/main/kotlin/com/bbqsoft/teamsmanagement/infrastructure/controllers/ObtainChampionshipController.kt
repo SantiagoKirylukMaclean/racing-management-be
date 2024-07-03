@@ -1,5 +1,7 @@
 package com.bbqsoft.teamsmanagement.infrastructure.controllers
 
+import com.bbqsoft.teamsmanagement.application.ChampionshipService
+import com.bbqsoft.teamsmanagement.application.DriverResponse
 import com.bbqsoft.teamsmanagement.domain.Driver
 import com.bbqsoft.teamsmanagement.domain.Team
 import org.springframework.http.ResponseEntity
@@ -10,12 +12,18 @@ import java.util.*
 
 @RestController
 @RequestMapping("/v1/championships/")
-class ObtainChampionshipController {
+class ObtainChampionshipController(private val championshipService: ChampionshipService) {
 
-        @GetMapping("/statistics")
-        fun obtainChampionshipStatics(): ResponseEntity<List<Driver>> {
-            return ResponseEntity.ok(getDriverStatics())
-        }
+    @GetMapping("/statistics")
+    fun obtainChampionshipStatics(): ResponseEntity<List<Driver>> {
+        return ResponseEntity.ok(getDriverStatics())
+    }
+
+    @GetMapping("/positions")
+    fun obtainChampionshipPositions(): ResponseEntity<List<DriverResponse>> {
+        return ResponseEntity.ok(championshipService.getAllDrivers())
+    }
+
 
     private fun getDriverStatics(): List<Driver> {
         val drivers = mutableListOf<Driver>()
