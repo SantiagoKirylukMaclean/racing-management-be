@@ -10,12 +10,16 @@ data class RaceResult(
     val id: Long = 0,
 
     @ManyToOne
-    @JoinColumn(name = "race_session_id")
-    val raceSession: RaceSession,
+    @JoinColumn(name = "race_id")
+    val race: Race,
 
     @ManyToOne
     @JoinColumn(name = "driver_id")
     val driver: Driver,
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    val sessionType: RaceSessionType,
 
     @Column(nullable = false)
     val points: Int,
@@ -25,5 +29,5 @@ data class RaceResult(
 
     @Column(nullable = false)
     val isDnf: Boolean
-
 ) : BaseEntity()
+

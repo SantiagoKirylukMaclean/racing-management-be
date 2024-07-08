@@ -2,6 +2,7 @@ package com.bbqsoft.teamsmanagement.infrastructure.controllers
 
 import com.bbqsoft.teamsmanagement.application.ChampionshipService
 import com.bbqsoft.teamsmanagement.application.DriverResponse
+import com.bbqsoft.teamsmanagement.application.dto.ChampionshipStandingsResponse
 import com.bbqsoft.teamsmanagement.domain.Driver
 import com.bbqsoft.teamsmanagement.domain.Team
 import org.springframework.http.ResponseEntity
@@ -22,6 +23,11 @@ class ObtainChampionshipController(private val championshipService: Championship
     @GetMapping("/positions")
     fun obtainChampionshipPositions(): ResponseEntity<List<DriverResponse>> {
         return ResponseEntity.ok(championshipService.getAllDrivers())
+    }
+
+    @GetMapping("/fullPositions")
+    fun obtainChampionshipFullPositions(): ResponseEntity<List<ChampionshipStandingsResponse>> {
+        return ResponseEntity.ok(championshipService.getChampionshipStandings())
     }
 
 

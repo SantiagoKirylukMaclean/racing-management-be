@@ -17,10 +17,9 @@ data class Race(
     @JoinColumn(name = "championship_id")
     val championship: Championship,
 
-    @OneToMany(mappedBy = "race", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val sessions: MutableList<RaceSession> = mutableListOf(),
-
     @Column(nullable = false)
-    val date: String
+    val date: String,
 
+    @OneToMany(mappedBy = "race", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val results: MutableList<RaceResult> = mutableListOf()
 ) : BaseEntity()
