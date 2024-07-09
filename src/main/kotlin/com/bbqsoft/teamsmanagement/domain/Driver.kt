@@ -14,5 +14,6 @@ data class Driver(
     val race: Int,
     val isWorldTour: Boolean,
     val isDnf: Boolean,
-    val id: UUID
+    val id: UUID,
+    val weight: Int? = 0,
 )

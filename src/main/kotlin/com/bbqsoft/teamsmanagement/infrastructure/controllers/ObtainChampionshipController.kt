@@ -46,7 +46,8 @@ class ObtainChampionshipController(private val championshipService: Championship
                 20,
                 true,
                 false,
-                UUID.fromString("1d1e39f1-3173-469d-8d51-b9b0c8553998")
+                UUID.fromString("1d1e39f1-3173-469d-8d51-b9b0c8553998"),
+                40
             )
         )
 
@@ -62,7 +63,8 @@ class ObtainChampionshipController(private val championshipService: Championship
                 25,
                 true,
                 false,
-                UUID.fromString("6182b28b-4b50-4d12-b800-1415de59a920")
+                UUID.fromString("6182b28b-4b50-4d12-b800-1415de59a920"),
+                30
             )
         )
 
@@ -94,7 +96,8 @@ class ObtainChampionshipController(private val championshipService: Championship
                 14,
                 true,
                 false,
-                UUID.fromString("e3c8966a-1a34-4ed3-8541-0672d5f2d06f")
+                UUID.fromString("e3c8966a-1a34-4ed3-8541-0672d5f2d06f"),
+                30
             )
         )
 
@@ -110,7 +113,8 @@ class ObtainChampionshipController(private val championshipService: Championship
                 0,
                 true,
                 false,
-                UUID.fromString("2f646a1c-f9b1-4e57-9442-b7e2878e2de7")
+                UUID.fromString("2f646a1c-f9b1-4e57-9442-b7e2878e2de7"),
+                20
             )
         )
 
@@ -126,7 +130,8 @@ class ObtainChampionshipController(private val championshipService: Championship
                 12,
                 true,
                 false,
-                UUID.fromString("ac18077f-3288-4d2b-a4b1-09ec6bf5d59a")
+                UUID.fromString("ac18077f-3288-4d2b-a4b1-09ec6bf5d59a"),
+                10
             )
         )
 
