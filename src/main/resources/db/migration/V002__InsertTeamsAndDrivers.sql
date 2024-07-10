@@ -1,7 +1,7 @@
 -- Teams
 INSERT INTO teams (id, name, created_at, updated_at) VALUES
  (1, 'Hyundai', NOW(), NOW()),
- (2, 'Cyman', NOW(), NOW()),
+ (2, 'Cyan', NOW(), NOW()),
  (3, 'Volcano', NOW(), NOW()),
  (4, 'Goat', NOW(), NOW()),
  (5, 'Claire', NOW(), NOW()),
