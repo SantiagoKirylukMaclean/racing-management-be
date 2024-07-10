@@ -25,12 +25,13 @@ class ChampionshipService(private val driverRepository: DriverRepository,
                 lastName = driver.lastName,
                 team = driver.team.name,
                 championshipStandings = raceResults.sumOf { it.points },
-                qualify = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING }.sumOf { it.points },
-                qualifyingPosition = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING }.minOfOrNull { it.position } ?: 0,
-                race = raceResults.filter { it.sessionType == RaceSessionType.RACE1 || it.sessionType == RaceSessionType.RACE2 }.sumOf { it.points },
+                qualify = 0, //raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING }.sumOf { it.points },
+                qualifyingPosition = 0, //raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING }.minOfOrNull { it.position } ?: 0,
+                race = 0, //raceResults.filter { it.sessionType == RaceSessionType.RACE1 || it.sessionType == RaceSessionType.RACE2 }.sumOf { it.points },
                 isWorldTour = true, // Adjust this according to your logic
-                isDnf = raceResults.any { it.isDnf },
-                id = driver.id.toString()
+                isDnf = false, //raceResults.any { it.isDnf },
+                id = driver.id.toString(),
+                weight = 0,
             )
         }
     }

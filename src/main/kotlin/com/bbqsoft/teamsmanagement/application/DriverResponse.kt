@@ -10,5 +10,6 @@ data class DriverResponse(
     val race: Int,
     val isWorldTour: Boolean,
     val isDnf: Boolean,
-    val id: String
+    val id: String,
+    var weight: Int = 0,
 )
