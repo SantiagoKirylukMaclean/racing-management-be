@@ -30,8 +30,8 @@ INSERT INTO race_results (race_id, driver_id, session_type, points, position, is
 (3, 21, 'RACE1', 10, 9, FALSE, NOW(), NOW()), -- Dušan Borković
 (3, 25, 'RACE1', 8, 10, FALSE, NOW(), NOW()), -- Mark Wilkins
 (3, 26, 'RACE1', 6, 11, FALSE, NOW(), NOW()), -- Harry Gottsacker
-(3, 10, 'RACE1', 3, 12, FALSE, NOW(), NOW()), -- Marco Butti
-(3, 24, 'RACE1', 0, 13, FALSE, NOW(), NOW()), -- Megan Tomlinson
+(3, 10, 'RACE1', 4, 12, FALSE, NOW(), NOW()), -- Marco Butti
+(3, 24, 'RACE1', 3, 13, FALSE, NOW(), NOW()), -- Megan Tomlinson
 (3, 27, 'RACE1', 0, 14, FALSE, NOW(), NOW()), -- Riley Pegram
 (3, 8, 'RACE1', 0, 15, FALSE, NOW(), NOW()); -- Santiago Urrutia
 

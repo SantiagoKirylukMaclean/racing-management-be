@@ -28,12 +28,22 @@ run:
 # Levantar el mysql
 .PHONY: mysql-docker
 mysql-docker:
-	docker-compose up teams-management-mysql
+	docker-compose up teams-management-mysql phpmyadmin -d
 
 # Docker Compose: parar, construir sin cache y levantar los servicios
 .PHONY: docker-rebuild
 docker-rebuild:
-	docker-compose down && docker-compose build --no-cache && docker-compose up
+	docker-compose down && docker-compose build --no-cache && docker-compose up -d
+
+# Docker Compose: parar, construir sin cache y levantar los servicios
+.PHONY: docker-run
+docker-run:
+	docker-compose up -d
+
+# Docker Compose: parar, construir sin cache y levantar los servicios
+.PHONY: docker-stop
+docker-stop:
+	docker-compose down
 
 # Tarea por defecto
 .PHONY: default

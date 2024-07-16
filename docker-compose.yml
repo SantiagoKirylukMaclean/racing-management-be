@@ -3,7 +3,8 @@ services:
 
   teams-management-mysql:
     container_name: teams-management-mysql
-    image: arm64v8/mysql:8.0
+    #image: arm64v8/mysql:8.0  For ARM64
+    image: mysql:8.0 # For AMD64
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: teams_management
@@ -15,6 +16,17 @@ services:
       - '3306'
     volumes:
       - my-db:/var/lib/mysql
+    networks:
+      - teams-management-network
+
+  phpmyadmin:
+    container_name: tcr-world-tour-phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: teams-management-mysql
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "9090:80"
     networks:
       - teams-management-network
 
