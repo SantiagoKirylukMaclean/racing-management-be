@@ -19,17 +19,6 @@ services:
     networks:
       - teams-management-network
 
-  phpmyadmin:
-    container_name: tcr-world-tour-phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    environment:
-      PMA_HOST: teams-management-mysql
-      MYSQL_ROOT_PASSWORD: password
-    ports:
-      - "9090:80"
-    networks:
-      - teams-management-network
-
   teams-management-app-be:
     container_name: teams-management-app-be
     build: .

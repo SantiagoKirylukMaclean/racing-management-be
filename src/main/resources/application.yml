@@ -22,3 +22,10 @@ spring:
 logging:
   file:
     name: /var/log/teamsmanagement.log
+
+server:
+  ssl:
+    key-store: /etc/ssl/mycerts/keystore.p12
+    key-store-password: colo
+    key-store-type: PKCS12
+    key-alias: kirylukalias
