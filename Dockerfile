@@ -1,19 +1,28 @@
-#FROM gradle:8-jdk21 as build
-#
-#WORKDIR /app
-#
-## Copiar los archivos de Gradle y el archivo de configuración de Gradle
-#COPY build.gradle.kts /app/
-#COPY settings.gradle.kts /app/
-#
-#COPY src /app/src
-#
-## Realizar la construcción de la aplicación
-#RUN gradle build --no-daemon
-
 FROM openjdk:21-jdk-slim
 
-#WORKDIR /app
+# Crear un directorio para los certificados
+RUN mkdir -p /etc/ssl/mycerts
+
+# Copiar los certificados al contenedor
+COPY ./keystore.p12 /etc/ssl/mycerts/
+
+# # Copiar los certificados al contenedor
+# COPY /etc/ssl/mycerts/kiryluk.app_private_key.key /etc/ssl/mycerts/
+# COPY /etc/ssl/mycerts/kiryluk.app_ssl_certificate.cer /etc/ssl/mycerts/
+# COPY /etc/ssl/mycerts/kiryluk.app_ssl_certificate_INTERMEDIATE.cer /etc/ssl/mycerts/
+#
+# # Crear el archivo PKCS12 dentro del contenedor
+# RUN openssl pkcs12 -export \
+#     -in /etc/ssl/mycerts/kiryluk.app_ssl_certificate.cer \
+#     -inkey /etc/ssl/mycerts/kiryluk.app_private_key.key \
+#     -certfile /etc/ssl/mycerts/kiryluk.app_ssl_certificate_INTERMEDIATE.cer \
+#     -out /etc/ssl/mycerts/keystore.p12 \
+#     -name kirylukAlias \
+#     -passout pass:colo
+
+# Asegurar los permisos correctos para el archivo PKCS12
+RUN chown root:root /etc/ssl/mycerts/keystore.p12 && \
+    chmod 600 /etc/ssl/mycerts/keystore.p12
 
 # Copy the jar file to the container
 COPY /build/libs/teamsmanagement-0.0.1-SNAPSHOT.jar teamsmanagement.jar
