@@ -8,6 +8,7 @@ data class DriverResponse(
     val qualify: Int,
     val qualifyingPosition: Int,
     val race: Int,
+    val race2Position: Int,
     val isWorldTour: Boolean,
     val isDnf: Boolean,
     val id: String,

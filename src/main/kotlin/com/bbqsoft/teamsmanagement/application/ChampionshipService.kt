@@ -24,14 +24,16 @@ class ChampionshipService(private val driverRepository: DriverRepository,
                 firstName = driver.firstName,
                 lastName = driver.lastName,
                 team = driver.team.name,
-                championshipStandings = raceResults.sumOf { it.points },
-                qualify = 0, //raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING }.sumOf { it.points },
-                qualifyingPosition = 0, //raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING }.minOfOrNull { it.position } ?: 0,
-                race = 0, //raceResults.filter { it.sessionType == RaceSessionType.RACE1 || it.sessionType == RaceSessionType.RACE2 }.sumOf { it.points },
+                championshipStandings = raceResults.filterNot { it.race.id == 4L }.sumOf { it.points },
+                qualify = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING && it.race.id == 4L }.sumOf { it.points },
+                qualifyingPosition = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING && it.race.id == 4L}.minOfOrNull { it.position } ?: 0,
+                race = raceResults.filter { it.sessionType == RaceSessionType.RACE1 && it.race.id == 4L }.sumOf { it.points },
+                race2Position = raceResults.filter { it.sessionType == RaceSessionType.RACE2 && it.race.id == 4L}.minOfOrNull { it.position } ?: 0,
                 isWorldTour = true, // Adjust this according to your logic
-                isDnf = false, //raceResults.any { it.isDnf },
+                isDnf = raceResults.firstOrNull { it.sessionType == RaceSessionType.RACE2 && it.race.id == 4L }?.isDnf
+                    ?: false,
                 id = driver.id.toString(),
-                weight = 0,
+                weight = raceResults.maxOf { it.compensationWeight }
             )
         }
     }

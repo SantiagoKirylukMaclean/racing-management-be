@@ -22,12 +22,16 @@ data class RaceResult(
     val sessionType: RaceSessionType,
 
     @Column(nullable = false)
-    val points: Int,
+    var points: Int,
 
     @Column(nullable = false)
-    val position: Int,
+    var position: Int,
 
     @Column(nullable = false)
-    val isDnf: Boolean
+    var isDnf: Boolean,
+
+    @Column(nullable = false)
+    var compensationWeight: Int = 0
+
 ) : BaseEntity()
 

@@ -36,14 +36,19 @@ docker-rebuild:
 	docker-compose down && docker-compose build --no-cache && docker-compose up -d
 
 # Docker Compose: parar, construir sin cache y levantar los servicios
-.PHONY: docker-run
+.PHONY: run-all
 docker-run:
 	docker-compose up -d
 
 # Docker Compose: parar, construir sin cache y levantar los servicios
-.PHONY: docker-stop
+.PHONY: stop-all
 docker-stop:
 	docker-compose down
+
+# Docker Compose: parar, construir sin cache y levantar los servicios
+.PHONY: run-app
+docker-run:
+	docker-compose up teams-management-app-be
 
 # Tarea por defecto
 .PHONY: default
