@@ -29,7 +29,7 @@ class ChampionshipService(private val driverRepository: DriverRepository,
                 qualifyingPosition = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING && it.race.id == 4L}.minOfOrNull { it.position } ?: 0,
                 race = raceResults.filter { it.sessionType == RaceSessionType.RACE1 && it.race.id == 4L }.sumOf { it.points },
                 race2Position = raceResults.filter { it.sessionType == RaceSessionType.RACE2 && it.race.id == 4L}.minOfOrNull { it.position } ?: 0,
-                isWorldTour = true, // Adjust this according to your logic
+                isWorldTour = worldTourDriverIds.contains(driver.id), // Adjust this according to your logic
                 isDnf = raceResults.firstOrNull { it.sessionType == RaceSessionType.RACE2 && it.race.id == 4L }?.isDnf
                     ?: false,
                 id = driver.id.toString(),
@@ -71,4 +71,7 @@ class ChampionshipService(private val driverRepository: DriverRepository,
         // Add logic to get race results for the driver
         return driverService.getRaceResults(driver.id)
     }
+
+    private val worldTourDriverIds = setOf(
+        1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 21L)
 }
