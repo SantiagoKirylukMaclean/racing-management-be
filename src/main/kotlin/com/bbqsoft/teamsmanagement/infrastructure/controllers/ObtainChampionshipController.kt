@@ -15,16 +15,19 @@ import java.util.*
 @RequestMapping("/v1/championships/")
 class ObtainChampionshipController(private val championshipService: ChampionshipService) {
 
+    //TODO: Remove
     @GetMapping("/statistics")
     fun obtainChampionshipStatics(): ResponseEntity<List<Driver>> {
         return ResponseEntity.ok(getDriverStatics())
     }
 
+    //Simulate Race and Simulate weekend.
     @GetMapping("/positions")
     fun obtainChampionshipPositions(): ResponseEntity<List<DriverResponse>> {
         return ResponseEntity.ok(championshipService.getAllDrivers())
     }
 
+    //Standings
     @GetMapping("/fullPositions")
     fun obtainChampionshipFullPositions(): ResponseEntity<List<ChampionshipStandingsResponse>> {
         return ResponseEntity.ok(championshipService.getChampionshipStandings())

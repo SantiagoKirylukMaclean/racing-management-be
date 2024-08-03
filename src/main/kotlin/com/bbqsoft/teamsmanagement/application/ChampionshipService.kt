@@ -10,6 +10,8 @@ import com.bbqsoft.teamsmanagement.infrastructure.repository.models.RaceResult
 import com.bbqsoft.teamsmanagement.infrastructure.repository.models.RaceSessionType
 import org.springframework.stereotype.Service
 
+private const val RACE_ID = 5L
+
 @Service
 class ChampionshipService(private val driverRepository: DriverRepository,
                           private val driverService: DriverService,
@@ -24,16 +26,16 @@ class ChampionshipService(private val driverRepository: DriverRepository,
                 firstName = driver.firstName,
                 lastName = driver.lastName,
                 team = driver.team.name,
-                championshipStandings = raceResults.filterNot { it.race.id == 4L }.sumOf { it.points },
-                qualify = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING && it.race.id == 4L }.sumOf { it.points },
-                qualifyingPosition = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING && it.race.id == 4L}.minOfOrNull { it.position } ?: 0,
-                race = raceResults.filter { it.sessionType == RaceSessionType.RACE1 && it.race.id == 4L }.sumOf { it.points },
-                race2Position = raceResults.filter { it.sessionType == RaceSessionType.RACE2 && it.race.id == 4L}.minOfOrNull { it.position } ?: 0,
+                championshipStandings = raceResults.filterNot { it.race.id == RACE_ID }.sumOf { it.points },
+                qualify = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING && it.race.id == RACE_ID }.sumOf { it.points },
+                qualifyingPosition = raceResults.filter { it.sessionType == RaceSessionType.QUALIFYING && it.race.id == RACE_ID }.minOfOrNull { it.position } ?: 0,
+                race = raceResults.filter { it.sessionType == RaceSessionType.RACE1 && it.race.id == RACE_ID }.sumOf { it.points },
+                race2Position = raceResults.filter { it.sessionType == RaceSessionType.RACE2 && it.race.id == RACE_ID }.minOfOrNull { it.position } ?: 0,
                 isWorldTour = worldTourDriverIds.contains(driver.id), // Adjust this according to your logic
-                isDnf = raceResults.firstOrNull { it.sessionType == RaceSessionType.RACE2 && it.race.id == 4L }?.isDnf
+                isDnf = raceResults.firstOrNull { it.sessionType == RaceSessionType.RACE2 && it.race.id == RACE_ID }?.isDnf
                     ?: false,
                 id = driver.id.toString(),
-                weight = raceResults.maxOf { it.compensationWeight }
+                weight = raceResults.filter { it.race.id == 5L }.firstOrNull()?.compensationWeight ?: 0
             )
         }
     }
