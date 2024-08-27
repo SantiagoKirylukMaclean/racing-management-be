@@ -1,7 +1,7 @@
 package com.bbqsoft.teamsmanagement.infrastructure.controllers
 
 import com.bbqsoft.teamsmanagement.application.ChampionshipService
-import com.bbqsoft.teamsmanagement.application.DriverResponse
+import com.bbqsoft.teamsmanagement.infrastructure.controllers.model.DriverChampionshipPositionsResponse
 import com.bbqsoft.teamsmanagement.application.dto.ChampionshipStandingsResponse
 import com.bbqsoft.teamsmanagement.domain.Driver
 import com.bbqsoft.teamsmanagement.domain.Team
@@ -23,7 +23,7 @@ class ObtainChampionshipController(private val championshipService: Championship
 
     //Simulate Race and Simulate weekend.
     @GetMapping("/positions")
-    fun obtainChampionshipPositions(): ResponseEntity<List<DriverResponse>> {
+    fun obtainChampionshipPositions(): ResponseEntity<List<DriverChampionshipPositionsResponse>> {
         return ResponseEntity.ok(championshipService.getAllDrivers())
     }
 

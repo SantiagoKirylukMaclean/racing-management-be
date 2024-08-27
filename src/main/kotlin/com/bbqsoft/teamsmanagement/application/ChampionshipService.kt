@@ -3,6 +3,7 @@ package com.bbqsoft.teamsmanagement.application
 import com.bbqsoft.teamsmanagement.application.dto.ChampionshipStandingsResponse
 import com.bbqsoft.teamsmanagement.application.dto.RaceResponse
 import com.bbqsoft.teamsmanagement.application.dto.RaceResultResponse
+import com.bbqsoft.teamsmanagement.infrastructure.controllers.model.DriverChampionshipPositionsResponse
 import com.bbqsoft.teamsmanagement.infrastructure.repository.DriverRepository
 import com.bbqsoft.teamsmanagement.infrastructure.repository.RaceRepository
 import com.bbqsoft.teamsmanagement.infrastructure.repository.models.Driver
@@ -18,11 +19,11 @@ class ChampionshipService(private val driverRepository: DriverRepository,
                           private val raceRepository: RaceRepository
 ) {
 
-    fun getAllDrivers(): List<DriverResponse> {
+    fun getAllDrivers(): List<DriverChampionshipPositionsResponse> {
         val drivers = driverRepository.findAll()
         return drivers.map { driver ->
             val raceResults = getRaceResults(driver)
-            DriverResponse(
+            DriverChampionshipPositionsResponse(
                 firstName = driver.firstName,
                 lastName = driver.lastName,
                 team = driver.team.name,

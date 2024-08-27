@@ -1,6 +1,6 @@
-package com.bbqsoft.teamsmanagement.application
+package com.bbqsoft.teamsmanagement.infrastructure.controllers.model
 
-data class DriverResponse(
+data class DriverChampionshipPositionsResponse(
     val firstName: String,
     val lastName: String,
     val team: String,
