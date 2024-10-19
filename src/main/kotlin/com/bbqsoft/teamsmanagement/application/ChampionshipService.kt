@@ -11,7 +11,7 @@ import com.bbqsoft.teamsmanagement.infrastructure.repository.models.RaceResult
 import com.bbqsoft.teamsmanagement.infrastructure.repository.models.RaceSessionType
 import org.springframework.stereotype.Service
 
-private const val RACE_ID = 5L
+private const val RACE_ID = 6L
 
 @Service
 class ChampionshipService(private val driverRepository: DriverRepository,
@@ -36,7 +36,7 @@ class ChampionshipService(private val driverRepository: DriverRepository,
                 isDnf = raceResults.firstOrNull { it.sessionType == RaceSessionType.RACE2 && it.race.id == RACE_ID }?.isDnf
                     ?: false,
                 id = driver.id.toString(),
-                weight = raceResults.filter { it.race.id == 5L }.firstOrNull()?.compensationWeight ?: 0
+                weight = raceResults.filter { it.race.id == RACE_ID }.firstOrNull()?.compensationWeight ?: 0
             )
         }
     }
