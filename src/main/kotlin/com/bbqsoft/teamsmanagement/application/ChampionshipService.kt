@@ -11,7 +11,7 @@ import com.bbqsoft.teamsmanagement.infrastructure.repository.models.RaceResult
 import com.bbqsoft.teamsmanagement.infrastructure.repository.models.RaceSessionType
 import org.springframework.stereotype.Service
 
-private const val RACE_ID = 6L
+private const val RACE_ID = 7L
 
 @Service
 class ChampionshipService(private val driverRepository: DriverRepository,
